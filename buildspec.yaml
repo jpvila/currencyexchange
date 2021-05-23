@@ -15,7 +15,7 @@ phases:
     - echo Build started on `date`
     - mvn clean package
     - docker build -t currencyexchange .
-    - docker build currencyexchange:latest --tag 124709293187.dkr.ecr.us-east-1.amazonaws.com/currencyexchange:latest .
+    - docker tag currencyexchange:latest 124709293187.dkr.ecr.us-east-1.amazonaws.com/currencyexchange:latest
   post_build:
     commands:
     - printenv
