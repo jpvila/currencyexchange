@@ -13,18 +13,18 @@ phases:
   build:
     commands:
     - echo Build started on `date`
-    - echo $IMAGE_URI
     - mvn clean package
-    - docker build --tag $IMAGE_URI .
+    - docker build -t currencyexchange .
+    - docker build currencyexchange:latest --tag 124709293187.dkr.ecr.us-east-1.amazonaws.com/currencyexchange:latest .
   post_build:
     commands:
     - printenv
     - echo Build completed on `date`
     - echo $(docker images)
     - echo Pushing docker image
-    - docker push $IMAGE_URI
+    - docker push 124709293187.dkr.ecr.us-east-1.amazonaws.com/currencyexchange:latest
     - echo push completed
-    - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $IMAGE_URI > imagedefinitions.json
+    - printf '[{"name":"%s","imageUri":"124709293187.dkr.ecr.us-east-1.amazonaws.com/currencyexchange:latest"}]' $CONTAINER_NAME > imagedefinitions.json
 artifacts:
   files:
   - imagedefinitions.json
