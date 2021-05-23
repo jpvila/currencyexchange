@@ -47,4 +47,10 @@ public class CurrencyExchangeController {
 			LOGGER.info(String.format("Header '%s' = %s", key, value));
 		});
 	}
+	
+	@GetMapping("/currency-exchange/helloworld")
+	public String retrieveExchangeValue() {
+		return "hola mundo";
+	}
+
 }
